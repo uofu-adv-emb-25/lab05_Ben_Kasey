@@ -38,9 +38,9 @@ pico_add_extra_outputs(gpio_interrupt)
 find_program(OPENOCD openocd)
 find_program(PICOTOOL picotool)
 
-add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS gpio_interrupt)
+add_custom_target(flash_gpio ${PICOTOOL} load -f $<TARGET_FILE:gpio_interrupt> DEPENDS gpio_interrupt)
 
-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:gpio_interrupt>" verify reset exit' DEPENDS gpio_interrupt)
+add_custom_target(openocd_flash_gpio ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:gpio_interrupt>" verify reset exit' DEPENDS gpio_interrupt)
 
 # rtc
 add_executable(rtc
@@ -64,9 +64,9 @@ pico_add_extra_outputs(rtc)
 find_program(OPENOCD openocd)
 find_program(PICOTOOL picotool)
 
-add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS rtc)
+add_custom_target(flash_rtc ${PICOTOOL} load -f $<TARGET_FILE:rtc> DEPENDS rtc)
 
-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:rtc>" verify reset exit' DEPENDS rtc)
+add_custom_target(openocd_flash_rtc ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:rtc>" verify reset exit' DEPENDS rtc)
 
 # sleep
 add_executable(sleep
@@ -90,9 +90,9 @@ pico_add_extra_outputs(sleep)
 find_program(OPENOCD openocd)
 find_program(PICOTOOL picotool)
 
-add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS sleep)
+add_custom_target(flash_sleep ${PICOTOOL} load -f $<TARGET_FILE:sleep> DEPENDS sleep)
 
-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:sleep>" verify reset exit' DEPENDS sleep)
+add_custom_target(openocd_flash_sleep ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:sleep>" verify reset exit' DEPENDS sleep)
 
 # task_delay
 add_executable(task_delay
@@ -116,9 +116,9 @@ pico_add_extra_outputs(task_delay)
 find_program(OPENOCD openocd)
 find_program(PICOTOOL picotool)
 
-add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS task_delay)
+add_custom_target(flash_task ${PICOTOOL} load -f $<TARGET_FILE:task_delay> DEPENDS task_delay)
 
-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:task_delay>" verify reset exit' DEPENDS task_delay)
+add_custom_target(openocd_flash_task ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:task_delay>" verify reset exit' DEPENDS task_delay)
 
 # timer
 add_executable(timer
@@ -142,6 +142,6 @@ pico_add_extra_outputs(timer)
 find_program(OPENOCD openocd)
 find_program(PICOTOOL picotool)
 
-add_custom_target(flash ${PICOTOOL} load -f $<TARGET_FILE:hello_freertos> DEPENDS timer)
+add_custom_target(flash_timer ${PICOTOOL} load -f $<TARGET_FILE:timer> DEPENDS timer)
 
-add_custom_target(openocd_flash ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:timer>" verify reset exit' DEPENDS timer)
+add_custom_target(openocd_flash_timer ${OPENOCD} -s ${OPENOCD_PATH} -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c 'adapter speed 5000; program "$<TARGET_FILE:timer>" verify reset exit' DEPENDS timer)
