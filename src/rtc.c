@@ -22,9 +22,15 @@ datetime_t alarm = {
     .sec   = 0
 };
 int toggle = 0;
-static void alarm_callback(void) {
+static void alarm_callback(void) {    
     toggle = !toggle;
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, toggle);
+    gpio_put(OUT_PIN, toggle);
+    
+    for(int i = 0; i < 1000e2; i++)
+    {
+        __nop();
+    }
+    
     printf("Fired!\n");
     alarm.sec = (alarm.sec + 1) % 60;
     rtc_set_alarm(&alarm, alarm_callback);
@@ -45,8 +51,14 @@ int main() {
         .sec   = 50
     };
 
+
+    gpio_init(OUT_PIN);
+    gpio_set_dir(OUT_PIN, GPIO_OUT);
+
+
+
     hard_assert(cyw43_arch_init() == PICO_OK);
-    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, toggle);
+    gpio_put(OUT_PIN, toggle);
     // Start the RTC
     rtc_init();
     rtc_set_datetime(&t);
