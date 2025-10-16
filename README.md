@@ -79,6 +79,11 @@ timer.c
 
 ## Activity 2:
 Measuring Delay of GPIO Interrupt:
-    | Interrupt Handler | Mean Delay | Max Delay |
-    | Normal | 0 s | 4.6 us |
-    | Busy Loop | 3.9974 ms | 4.002 ms |
+| Interrupt Handler | Mean Delay | Max Delay |
+| Normal | 0 s | 4.6 us |
+| Busy Loop | 3.9974 ms | 4.002 ms |
+
+| Syntax | Description |
+| --- | ----------- |
+| Header | Title |
+| Paragraph | Text |
