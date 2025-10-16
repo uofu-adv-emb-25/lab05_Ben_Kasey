@@ -61,7 +61,7 @@ rts.c:
     | Duty-Cycle | 50.00 % | 50.00 % | 50.00 % | 0.00 % | 123 |
 
 task_delay.c
-    Timing is off by too much to get an accurate delay reading.
+    Timing is off by too much to get an accurate delay reading. However, extrapolating using the frequency, the estimated drift would be 28.8 s/hour.
 
     | Type | Min | Max | Mean | StdDev | Wave Count |
     | Period | 208.0012 ms | 208.00312 ms | 208.0012 ms | 0 s | 129 |
